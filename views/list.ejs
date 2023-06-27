@@ -1,0 +1,25 @@
+<%- include("header")  -%>
+<body>
+   <div class="box" id="heading">
+        <h1 style="color:red" id="heading"> <%= listtitle %></h1></div>
+  <div class="box">
+
+<!--adding new items-->
+
+<% xtraitem.forEach(function(item){ %>
+    <form method="post" action="/delete">
+    <div class="item">
+    
+        <input type="checkbox" name="checkbox" value="<%= item._id %> " onchange="this.form.submit()"> <p><%= item.name  %></p> 
+      </div>
+      <input type="hidden" name="listName" value="<%= listtitle %>">
+    </form>
+    <% }) %>
+
+ 
+<form method="post"action='/'class="item">
+    <input type="text" name="xtra" placeholder="add new items">
+    <button type="submit" name="list" value= <%= listtitle %> >+</button>
+</form>
+  </div>
+<%- include("footer")  -%>
